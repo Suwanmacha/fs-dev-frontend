@@ -1,10 +1,10 @@
 # full-stack-dev practice
 
-バックエンド用レポジトリです。
+フロントエンド用レポジトリです。
 
 ## Techs
 
-Node.js, MySQL
+Next.js, Typescript
 
 ## Develop
 
@@ -34,5 +34,5 @@ master ブランチからの分岐として作成され、develop ブランチ�
 ## Run
 
 `npm install`\
-`npm run start` : テスト\
+`npm run dev` : テスト\
 `http://localhost:3000`
