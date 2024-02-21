@@ -1,4 +1,4 @@
-import React, {ReactHTMLElement, useState} from "react";
+import React, {ReactHTMLElement, useState, useEffect} from "react";
 import { useRouter } from 'next/router';
 
 const Registar = () => {
@@ -6,6 +6,7 @@ const Registar = () => {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("");
     const [error, setError] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(true);
 
     // ROUTER SETTING
     const router = useRouter();
@@ -27,12 +28,19 @@ const Registar = () => {
             });
     
             // レスポンスの処理を追加する
-            const data = await res.json();
-            if (data.token) {
+            const data = await res.json()
+
+            console.log("res.status  : " + res.status);
+            console.log("res.message : " + data.message);
+            console.log("res.ok      : " + data.ok)
+ 
+            if (data.ok) {
                 router.push("/login");
             } else {
                 setError(data.message);
             }
+
+            console.log(error)
 
         } catch (error) {
             console.error("エラーが発生しました:", error);
@@ -51,6 +59,8 @@ const Registar = () => {
                 break;
             case "password":
                 setPassword(value);
+                break;
+            default:
                 break;
         }
     }

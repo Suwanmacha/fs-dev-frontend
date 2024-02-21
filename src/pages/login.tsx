@@ -27,12 +27,19 @@ const Registar = () => {
             });
     
             // レスポンスの処理を追加する
-            const data = await res.json();
-            if (data.token) {
+            const data = await res.json()
+
+            console.log("res.status  : " + res.status);
+            console.log("res.message : " + data.message);
+            console.log("res.ok      : " + data.ok)
+ 
+            if (data.ok) {
                 router.push("/page");
             } else {
                 setError(data.message);
             }
+
+            console.log(error)
 
         } catch (error) {
             console.error("エラーが発生しました:", error);
@@ -71,7 +78,7 @@ const Registar = () => {
                 </button>
             </form>
 
-            <a href="http://localhost:3000/">アカウントを作る:SIGN UP</a>
+            <a href="http://localhost:3000/signup">アカウントを作る:SIGN UP</a>
         </>
     );
 }
